@@ -39,8 +39,15 @@ const posts = [
 
     <div class="grid md:grid-cols-3 gap-8">
       {posts.map((post) => (
-        <article class="group">
-          <div class="bg-gradient-to-br from-light to-white rounded-2xl p-6 border border-gray-100 group-hover:border-primary/20 group-hover:shadow-md transition-all duration-300 h-full flex flex-col">
+        <article class="group" aria-label={post.title}>
+          <div class="relative bg-gradient-to-br from-light to-white rounded-2xl p-6 border border-gray-100 group-hover:border-primary/20 group-hover:shadow-md transition-all duration-300 h-full flex flex-col">
+            <!-- Coming Soon badge -->
+            <div class="absolute top-4 right-4">
+              <span class="text-xs font-semibold px-2.5 py-1 bg-amber-100 text-amber-700 rounded-full border border-amber-200">
+                Coming Soon
+              </span>
+            </div>
+
             <div class="flex items-center gap-3 mb-4">
               <span class="text-xs font-medium px-3 py-1 bg-highlight/10 text-highlight rounded-full">
                 {post.category}
@@ -48,7 +55,7 @@ const posts = [
               <span class="text-xs text-muted">{post.readTime}</span>
             </div>
 
-            <h3 class="text-lg font-semibold text-primary mb-3 group-hover:text-accent transition-colors">
+            <h3 class="text-lg font-semibold text-primary mb-3 pr-20">
               {post.title}
             </h3>
 
@@ -58,8 +65,8 @@ const posts = [
 
             <div class="flex items-center justify-between pt-4 border-t border-gray-100">
               <span class="text-xs text-muted">{post.date}</span>
-              <span class="text-sm font-medium text-primary group-hover:text-highlight transition-colors">
-                Read more &rarr;
+              <span class="text-sm font-medium text-muted cursor-default" aria-label="Article not yet published">
+                Coming soon
               </span>
             </div>
           </div>
