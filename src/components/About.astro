@@ -49,12 +49,12 @@
       <div class="space-y-4">
         <h3 class="text-lg font-semibold text-primary mb-6">What I Bring</h3>
         {[
-          { skill: "AI Agents & Intelligent Automation", level: "96%" },
-          { skill: "Digital Transformation Strategy", level: "95%" },
-          { skill: "Oracle Fusion Cloud & EBS", level: "98%" },
-          { skill: "Workflow Automation & Integration", level: "94%" },
-          { skill: "AI-Powered Analytics & Reporting", level: "92%" },
-        ].map(({ skill, level }) => (
+          { skill: "AI Agents & Intelligent Automation", level: "96%", value: 96 },
+          { skill: "Digital Transformation Strategy", level: "95%", value: 95 },
+          { skill: "Oracle Fusion Cloud & EBS", level: "98%", value: 98 },
+          { skill: "Workflow Automation & Integration", level: "94%", value: 94 },
+          { skill: "AI-Powered Analytics & Reporting", level: "92%", value: 92 },
+        ].map(({ skill, level, value }) => (
           <div>
             <div class="flex justify-between text-sm mb-2">
               <span class="font-medium text-dark">{skill}</span>
@@ -62,6 +62,11 @@
             </div>
             <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
               <div
+                role="progressbar"
+                aria-valuenow={value}
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-label={`${skill}: ${level}`}
                 class="h-full bg-gradient-to-r from-primary to-accent rounded-full"
                 style={`width: ${level}`}
               />

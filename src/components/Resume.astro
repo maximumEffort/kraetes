@@ -5,6 +5,8 @@ const experience = [
     company: "Dicetek LLC / Digital Dubai Authority",
     location: "Dubai, UAE",
     period: "Jun 2024 — Present",
+    dateFrom: "2024-06",
+    dateTo: undefined as string | undefined,
     description: "Dedicated SME providing full-time operation support for Digital Dubai Authority on Oracle E-Business Suite. Leading HCM strategy and system optimization for a major government entity.",
   },
   {
@@ -12,6 +14,8 @@ const experience = [
     company: "Mastek",
     location: "Dubai, UAE",
     period: "Jul 2021 — May 2024",
+    dateFrom: "2021-07",
+    dateTo: "2024-05",
     description: "Led Oracle Fusion Cloud HCM implementations for Al Khayyat Investments (Dubai) as HCM Lead. Provided advanced support for Zamil Group Holding Company (Saudi Arabia) on Oracle Fusion Cloud. Augmented resource for Digital Dubai Authority on Oracle EBS.",
   },
   {
@@ -19,6 +23,8 @@ const experience = [
     company: "Oracle",
     location: "Egypt",
     period: "Aug 2018 — Jun 2021",
+    dateFrom: "2018-08",
+    dateTo: "2021-06",
     description: "Senior Advanced Customer Services engineer at Oracle, serving major clients including National Bank of Egypt, Department of Finance Abu Dhabi, National Water Company Saudi Arabia, Oman Aviation, Airports Company South Africa, E-Government Program Yesser, and Kuwait Integrated Petroleum Industries.",
   },
   {
@@ -26,6 +32,8 @@ const experience = [
     company: "Evolutionary Systems Consultancy",
     location: "Egypt",
     period: "Mar 2016 — Jul 2018",
+    dateFrom: "2016-03",
+    dateTo: "2018-07",
     description: "Delivered Oracle EBS implementations for Abdul Latif Jameel, Almoosa Specialist Hospital, Kuwait Credit Bank, and Ministry of Foreign Affairs Abu Dhabi. Handled full lifecycle from requirements to go-live.",
   },
   {
@@ -33,6 +41,8 @@ const experience = [
     company: "Sphere Consulting",
     location: "Egypt",
     period: "Jan 2013 — Feb 2016",
+    dateFrom: "2013-01",
+    dateTo: "2016-02",
     description: "Oracle HCM functional consulting for Kuwait University (upgrade) and Hamad Medical Corporation Qatar (support). Built foundation in enterprise HR system implementation.",
   },
 ];
@@ -64,7 +74,14 @@ const certifications = [
           {experience.map((item) => (
             <div class="relative pl-8 border-l-2 border-primary/20">
               <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white border-2 border-highlight" />
-              <div class="text-xs font-medium text-highlight mb-1">{item.period}</div>
+              <div class="text-xs font-medium text-highlight mb-1">
+                <time datetime={item.dateFrom}>{item.period.split(" — ")[0]}</time>
+                {" — "}
+                {item.dateTo
+                  ? <time datetime={item.dateTo}>{item.period.split(" — ")[1]}</time>
+                  : <span>{item.period.split(" — ")[1]}</span>
+                }
+              </div>
               <h4 class="text-lg font-semibold text-primary">{item.role}</h4>
               <div class="text-sm font-medium text-accent mb-2">{item.company} — {item.location}</div>
               <p class="text-muted text-sm leading-relaxed">{item.description}</p>
