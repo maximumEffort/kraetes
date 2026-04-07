@@ -10,3 +10,8 @@
   --color-dark: #212529;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
+
+/* Offset for fixed navbar so anchor links land below it */
+html {
+  scroll-padding-top: 5rem;
+}

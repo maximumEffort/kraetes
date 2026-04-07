@@ -9,7 +9,7 @@ interface Props {
 const {
   title,
   description = "Amr Sarhan — Digital Transformation & Automation Consultant. Helping businesses modernize, automate, and grow.",
-  image = "/og-image.png",
+  image = "/og-image.svg",
   canonicalURL = Astro.url.href,
 } = Astro.props;
 
@@ -35,7 +35,7 @@ const jsonLd = {
         "addressCountry": "AE"
       },
       "sameAs": [
-        "https://www.linkedin.com/in/amr-sarhan"
+        "https://www.linkedin.com/in/amr-sarhan52"
       ]
     },
     {
@@ -58,11 +58,12 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" dir="ltr" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="author" content="Amr Sarhan" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Canonical -->
@@ -74,6 +75,9 @@ const jsonLd = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Kraetes — Digital Transformation & AI Automation Consulting" />
     <meta property="og:site_name" content="Kraetes" />
     <meta property="og:locale" content="en_US" />
 
@@ -82,6 +86,7 @@ const jsonLd = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content="Kraetes — Digital Transformation & AI Automation Consulting" />
 
     <!-- PWA / Theme -->
     <meta name="theme-color" content="#0f172a" />
@@ -94,15 +99,29 @@ const jsonLd = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
-    <!-- Fonts: self-hosted via Google Fonts with font-display:swap -->
+    <!-- Google Fonts — non-render-blocking with font-display:swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      />
+    </noscript>
 
     <title>{title}</title>
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- Analytics injection point — add analytics scripts via this slot -->
+    <slot name="head" />
   </head>
   <body class="bg-white text-dark font-sans antialiased">
     <!-- Skip to content -->
