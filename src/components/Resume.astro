@@ -1,0 +1,81 @@
+---
+const experience = [
+  {
+    role: "Senior Principal Oracle HRMS ERP Specialist",
+    period: "2018 — Present",
+    description: "Leading enterprise-scale Oracle HRMS implementations and digital transformation initiatives. Architecting solutions that streamline HR operations for organizations with thousands of employees.",
+  },
+  {
+    role: "Oracle ERP Consultant",
+    period: "2013 — 2018",
+    description: "Delivered full-cycle ERP implementations including requirements analysis, system design, data migration, testing, and go-live support across multiple industries.",
+  },
+  {
+    role: "ERP Systems Analyst",
+    period: "2010 — 2013",
+    description: "Analyzed business processes and translated requirements into technical specifications. Managed system configurations and customizations for Oracle EBS modules.",
+  },
+];
+
+const certifications = [
+  "Oracle HRMS Certified Implementation Specialist",
+  "Oracle EBS R12 Certified Professional",
+  "Business Process Automation Expert",
+  "Project Management Professional",
+];
+---
+
+<section id="resume" class="py-24 bg-light">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <p class="text-highlight font-medium text-sm tracking-wide uppercase mb-3">Resume</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+        Professional journey
+      </h2>
+      <p class="text-muted max-w-2xl mx-auto">
+        15+ years of building, implementing, and transforming enterprise systems.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-12">
+      <!-- Experience timeline -->
+      <div class="md:col-span-2">
+        <h3 class="text-lg font-semibold text-primary mb-8">Experience</h3>
+        <div class="space-y-8">
+          {experience.map((item, i) => (
+            <div class="relative pl-8 border-l-2 border-primary/20">
+              <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white border-2 border-highlight" />
+              <div class="text-xs font-medium text-highlight mb-1">{item.period}</div>
+              <h4 class="text-lg font-semibold text-primary mb-2">{item.role}</h4>
+              <p class="text-muted text-sm leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Certifications & Skills -->
+      <div>
+        <h3 class="text-lg font-semibold text-primary mb-8">Certifications</h3>
+        <div class="space-y-3">
+          {certifications.map((cert) => (
+            <div class="flex items-start gap-3 p-3 bg-white rounded-lg">
+              <svg class="w-5 h-5 text-highlight mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-sm text-dark">{cert}</span>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="text-lg font-semibold text-primary mt-10 mb-6">Technologies</h3>
+        <div class="flex flex-wrap gap-2">
+          {["Oracle EBS", "PL/SQL", "Oracle HRMS", "REST APIs", "Python", "SQL", "Power BI", "Tableau", "BPEL", "SOA", "OIC", "AWS"].map((tech) => (
+            <span class="text-xs font-medium px-3 py-1.5 bg-white border border-gray-200 rounded-full text-muted hover:border-primary hover:text-primary transition-colors">
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

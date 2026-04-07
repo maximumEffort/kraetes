@@ -1,0 +1,73 @@
+---
+const projects = [
+  {
+    title: "Enterprise HRMS Overhaul",
+    category: "ERP Implementation",
+    description: "Led the complete migration and modernization of an Oracle HRMS system for a 5,000+ employee organization, reducing payroll processing time by 60% and eliminating manual data entry errors.",
+    tags: ["Oracle HRMS", "Data Migration", "Process Automation"],
+    result: "60% faster payroll processing",
+  },
+  {
+    title: "Automated Onboarding System",
+    category: "Business Automation",
+    description: "Designed and implemented an end-to-end employee onboarding automation system that reduced the onboarding cycle from 2 weeks to 2 days while improving compliance tracking.",
+    tags: ["Workflow Automation", "Compliance", "Integration"],
+    result: "85% reduction in onboarding time",
+  },
+  {
+    title: "Multi-System Integration Platform",
+    category: "Systems Integration",
+    description: "Architected a unified integration platform connecting HR, Finance, and Operations systems, creating a single source of truth and enabling real-time reporting across departments.",
+    tags: ["API Integration", "Data Pipeline", "Analytics"],
+    result: "Real-time cross-department reporting",
+  },
+];
+---
+
+<section id="projects" class="py-24 bg-light">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <p class="text-highlight font-medium text-sm tracking-wide uppercase mb-3">Projects</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+        Results that speak for themselves
+      </h2>
+      <p class="text-muted max-w-2xl mx-auto">
+        A selection of engagements where strategic thinking met hands-on execution
+        to deliver transformative outcomes.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {projects.map((project) => (
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300">
+          <!-- Project header -->
+          <div class="bg-gradient-to-br from-primary to-accent p-6">
+            <span class="text-xs font-medium text-white/70 uppercase tracking-wide">
+              {project.category}
+            </span>
+            <h3 class="text-xl font-semibold text-white mt-2">{project.title}</h3>
+          </div>
+
+          <div class="p-6">
+            <p class="text-muted text-sm leading-relaxed mb-4">{project.description}</p>
+
+            <!-- Result highlight -->
+            <div class="bg-highlight/5 rounded-lg px-4 py-3 mb-4">
+              <div class="text-xs font-medium text-highlight uppercase tracking-wide">Key Result</div>
+              <div class="text-sm font-semibold text-primary mt-1">{project.result}</div>
+            </div>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span class="text-xs font-medium px-3 py-1 bg-light rounded-full text-muted">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
