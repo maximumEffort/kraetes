@@ -47,29 +47,51 @@
 
       <!-- Contact Form -->
       <div>
-        <form class="space-y-5" id="contact-form">
+        <!-- Success state -->
+        <div id="form-success" class="hidden text-center py-12">
+          <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-2">Message sent!</h3>
+          <p class="text-muted">Thank you for reaching out. I'll get back to you within 24 hours.</p>
+        </div>
+
+        <!-- Error banner -->
+        <div id="form-error" class="hidden mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700" role="alert">
+          Something went wrong. Please try again or email me directly at <a href="mailto:amr.sarhan52@gmail.com" class="underline font-medium">amr.sarhan52@gmail.com</a>.
+        </div>
+
+        <form class="space-y-5" id="contact-form" novalidate>
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label for="name" class="block text-sm font-medium text-dark mb-2">Name</label>
+              <label for="name" class="block text-sm font-medium text-dark mb-2">Name <span class="text-red-500" aria-hidden="true">*</span></label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 required
+                autocomplete="name"
                 class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all text-sm"
                 placeholder="Your name"
+                aria-required="true"
               />
+              <p id="name-error" class="hidden mt-1 text-xs text-red-600" role="alert">Please enter your name.</p>
             </div>
             <div>
-              <label for="email" class="block text-sm font-medium text-dark mb-2">Email</label>
+              <label for="email" class="block text-sm font-medium text-dark mb-2">Email <span class="text-red-500" aria-hidden="true">*</span></label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 required
+                autocomplete="email"
                 class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all text-sm"
                 placeholder="you@company.com"
+                aria-required="true"
               />
+              <p id="email-error" class="hidden mt-1 text-xs text-red-600" role="alert">Please enter a valid email address.</p>
             </div>
           </div>
           <div>
@@ -80,15 +102,15 @@
               class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all text-sm"
             >
               <option value="">What can I help with?</option>
-              <option>Digital Transformation Consulting</option>
-              <option>Business Automation</option>
-              <option>ERP Implementation</option>
-              <option>Systems Integration</option>
-              <option>General Inquiry</option>
+              <option value="Digital Transformation Consulting">Digital Transformation Consulting</option>
+              <option value="Business Automation">Business Automation</option>
+              <option value="ERP Implementation">ERP Implementation</option>
+              <option value="Systems Integration">Systems Integration</option>
+              <option value="General Inquiry">General Inquiry</option>
             </select>
           </div>
           <div>
-            <label for="message" class="block text-sm font-medium text-dark mb-2">Message</label>
+            <label for="message" class="block text-sm font-medium text-dark mb-2">Message <span class="text-red-500" aria-hidden="true">*</span></label>
             <textarea
               id="message"
               name="message"
@@ -96,16 +118,83 @@
               required
               class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all text-sm resize-none"
               placeholder="Tell me about your project..."
+              aria-required="true"
             ></textarea>
+            <p id="message-error" class="hidden mt-1 text-xs text-red-600" role="alert">Please enter your message.</p>
           </div>
           <button
             type="submit"
-            class="w-full px-8 py-3.5 bg-primary text-white font-medium rounded-lg hover:bg-accent transition-colors"
+            id="submit-btn"
+            class="w-full px-8 py-3.5 bg-primary text-white font-medium rounded-lg hover:bg-accent transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            Send Message
+            <span id="submit-label">Send Message</span>
+            <span id="submit-loading" class="hidden">Sending…</span>
           </button>
         </form>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/xpwzojkv";
+
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement | null;
+  const submitLabel = document.getElementById("submit-label");
+  const submitLoading = document.getElementById("submit-loading");
+  const successEl = document.getElementById("form-success");
+  const errorEl = document.getElementById("form-error");
+
+  function showFieldError(id: string, show: boolean) {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle("hidden", !show);
+  }
+
+  function validateForm(data: FormData): boolean {
+    let valid = true;
+    const name = (data.get("name") as string | null)?.trim() ?? "";
+    const email = (data.get("email") as string | null)?.trim() ?? "";
+    const message = (data.get("message") as string | null)?.trim() ?? "";
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    showFieldError("name-error", !name);
+    showFieldError("email-error", !email || !emailRe.test(email));
+    showFieldError("message-error", !message);
+
+    if (!name || !email || !emailRe.test(email) || !message) valid = false;
+    return valid;
+  }
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    errorEl?.classList.add("hidden");
+
+    const data = new FormData(form);
+    if (!validateForm(data)) return;
+
+    if (submitBtn) submitBtn.disabled = true;
+    submitLabel?.classList.add("hidden");
+    submitLoading?.classList.remove("hidden");
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        form.classList.add("hidden");
+        successEl?.classList.remove("hidden");
+      } else {
+        throw new Error("Server error");
+      }
+    } catch {
+      errorEl?.classList.remove("hidden");
+      if (submitBtn) submitBtn.disabled = false;
+      submitLabel?.classList.remove("hidden");
+      submitLoading?.classList.add("hidden");
+    }
+  });
+</script>
