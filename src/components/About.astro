@@ -3,77 +3,48 @@
 ---
 
 <section id="about" class="py-24 bg-light">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="grid md:grid-cols-2 gap-16 items-center">
-      <div>
-        <p class="text-highlight font-medium text-sm tracking-wide uppercase mb-3">About</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
-          12 years of enterprise systems.<br />Now building the future with AI.
-        </h2>
-        <p class="text-muted leading-relaxed mb-4">
-          I'm Amr Sarhan — a digital transformation consultant based in Dubai who helps
-          businesses replace manual processes with AI agents, intelligent automation, and
-          modern systems that scale. I work across the UAE, Saudi Arabia, Egypt, and 5 other
-          countries in the MENA region and beyond.
-        </p>
-        <p class="text-muted leading-relaxed mb-4">
-          My career took me from Vodafone through Oracle itself, and into senior consulting
-          roles leading enterprise-wide HCM and ERP transformations for government authorities,
-          national banks, and multinational corporations. That foundation — understanding how
-          large organizations actually operate — is what makes my AI solutions work in the real world.
-        </p>
-        <p class="text-muted leading-relaxed mb-8">
-          Today I combine deep enterprise expertise with cutting-edge AI to build agents that
-          automate HR operations, reporting pipelines, compliance workflows, and more. I don't
-          just deploy technology — I architect systems that think, learn, and multiply your team's
-          capacity.
-        </p>
+  <div class="max-w-3xl mx-auto px-6">
+    <p class="text-highlight font-medium text-sm tracking-wide uppercase mb-3">About</p>
+    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-8">
+      The short version
+    </h2>
 
-        <div class="grid grid-cols-3 gap-6">
-          <div>
-            <div class="text-3xl font-bold text-primary">12+</div>
-            <div class="text-sm text-muted mt-1">Years in Enterprise</div>
-          </div>
-          <div>
-            <div class="text-3xl font-bold text-primary">20+</div>
-            <div class="text-sm text-muted mt-1">Clients Transformed</div>
-          </div>
-          <div>
-            <div class="text-3xl font-bold text-primary">8</div>
-            <div class="text-sm text-muted mt-1">Countries Served</div>
-          </div>
-        </div>
-      </div>
+    <div class="space-y-5 text-muted leading-relaxed text-lg">
+      <p>
+        I'm a consultant based in Dubai with 12+ years in enterprise systems. I started
+        my career in Oracle HCM consulting, spent three years at Oracle itself, and
+        eventually moved into senior roles leading large-scale digital transformations
+        for government authorities, banks, and multinationals across the MENA region.
+      </p>
+      <p>
+        Over the years I've worked with 20+ organizations across 8 countries &mdash;
+        from the Digital Dubai Authority and the National Bank of Egypt to petroleum
+        companies in Kuwait and healthcare institutions in Qatar. That range taught me
+        that technology only works when it fits the people and processes it serves.
+      </p>
+      <p>
+        Today, I'm focused on bringing AI and intelligent automation into enterprise
+        operations. Not as a buzzword, but as a practical tool &mdash; automating the
+        repetitive, surfacing what matters, and giving teams back the time to do
+        meaningful work.
+      </p>
+    </div>
 
-      <!-- Skills / Expertise -->
-      <div class="space-y-4">
-        <h3 class="text-lg font-semibold text-primary mb-6">What I Bring</h3>
-        {[
-          { skill: "AI Agents & Intelligent Automation", level: "96%", value: 96 },
-          { skill: "Digital Transformation Strategy", level: "95%", value: 95 },
-          { skill: "Oracle Fusion Cloud & EBS", level: "98%", value: 98 },
-          { skill: "Workflow Automation & Integration", level: "94%", value: 94 },
-          { skill: "AI-Powered Analytics & Reporting", level: "92%", value: 92 },
-        ].map(({ skill, level, value }) => (
-          <div>
-            <div class="flex justify-between text-sm mb-2">
-              <span class="font-medium text-dark">{skill}</span>
-              <span class="text-muted">{level}</span>
-            </div>
-            <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
-              <div
-                role="progressbar"
-                aria-valuenow={value}
-                aria-valuemin={0}
-                aria-valuemax={100}
-                aria-label={`${skill}: ${level}`}
-                class="h-full bg-gradient-to-r from-primary to-accent rounded-full"
-                style={`width: ${level}`}
-              />
-            </div>
-          </div>
-        ))}
-      </div>
+    <div class="mt-12 flex flex-wrap gap-3">
+      {[
+        "Oracle Fusion Cloud",
+        "Oracle EBS",
+        "AI & Automation",
+        "Digital Transformation",
+        "HCM & Payroll",
+        "Systems Integration",
+        "SQL & PL/SQL",
+        "MENA Region",
+      ].map((tag) => (
+        <span class="text-sm font-medium px-4 py-2 bg-white border border-gray-200 rounded-full text-muted">
+          {tag}
+        </span>
+      ))}
     </div>
   </div>
 </section>

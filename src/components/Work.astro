@@ -1,0 +1,79 @@
+---
+const highlights = [
+  {
+    title: "Digital Dubai Authority",
+    role: "Dedicated SME — Oracle EBS",
+    description:
+      "Full-time operation support and system optimization for one of Dubai's key digital government authorities. Managing HR modules, driving HCM strategy, and keeping critical systems running for a city-scale operation.",
+    context: "Government | Dubai, UAE",
+  },
+  {
+    title: "Al Khayyat Investments",
+    role: "HCM Lead — Oracle Fusion Cloud",
+    description:
+      "Led the complete Oracle Fusion Cloud HCM implementation from requirements gathering through go-live for a major Dubai-based conglomerate. Full lifecycle ownership as HCM Lead.",
+    context: "Private Sector | Dubai, UAE",
+  },
+  {
+    title: "Oracle — Advanced Customer Services",
+    role: "Senior ACS Engineer",
+    description:
+      "Three years at Oracle serving major clients across the region — National Bank of Egypt, Department of Finance Abu Dhabi, National Water Company Saudi Arabia, Oman Aviation, and more. Deep enterprise support at scale.",
+    context: "Enterprise | Multi-country",
+  },
+  {
+    title: "Enterprise Implementations",
+    role: "Techno-Functional Specialist",
+    description:
+      "Delivered Oracle EBS implementations for Abdul Latif Jameel, Almoosa Hospital, Kuwait Credit Bank, and Ministry of Foreign Affairs Abu Dhabi. Full lifecycle from requirements to go-live across the MENA region.",
+    context: "Various Industries | MENA",
+  },
+];
+---
+
+<section id="work" class="py-24">
+  <div class="max-w-3xl mx-auto px-6">
+    <p class="text-highlight font-medium text-sm tracking-wide uppercase mb-3">Work</p>
+    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+      Where I've made an impact
+    </h2>
+    <p class="text-muted text-lg mb-12">
+      A few highlights from 12+ years of enterprise work across the MENA region.
+    </p>
+
+    <div class="space-y-8">
+      {highlights.map((item) => (
+        <div class="group p-6 md:p-8 rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow-md transition-all duration-300">
+          <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
+            <div>
+              <h3 class="text-xl font-semibold text-primary">{item.title}</h3>
+              <p class="text-sm font-medium text-accent">{item.role}</p>
+            </div>
+            <span class="text-xs font-medium text-muted bg-light px-3 py-1 rounded-full shrink-0">
+              {item.context}
+            </span>
+          </div>
+          <p class="text-muted leading-relaxed">{item.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 p-6 bg-light rounded-2xl">
+      <h3 class="text-sm font-semibold text-primary uppercase tracking-wide mb-3">Certifications</h3>
+      <div class="space-y-2">
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-highlight mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-sm text-dark">Oracle Global Human Resources Cloud 2019 — Certified Implementation Specialist</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-highlight mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-sm text-dark">Oracle Payroll Cloud 2019 — Certified Implementation Specialist</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
