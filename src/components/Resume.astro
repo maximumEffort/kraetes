@@ -1,27 +1,45 @@
 ---
 const experience = [
   {
-    role: "Senior Principal Oracle HRMS ERP Specialist",
-    period: "2018 — Present",
-    description: "Leading enterprise-scale Oracle HRMS implementations and digital transformation initiatives. Architecting solutions that streamline HR operations for organizations with thousands of employees.",
+    role: "Sr. Principal Specialist",
+    company: "Dicetek LLC / Digital Dubai Authority",
+    location: "Dubai, UAE",
+    period: "Jun 2024 — Present",
+    description: "Dedicated SME providing full-time operation support for Digital Dubai Authority on Oracle E-Business Suite. Leading HCM strategy and system optimization for a major government entity.",
   },
   {
-    role: "Oracle ERP Consultant",
-    period: "2013 — 2018",
-    description: "Delivered full-cycle ERP implementations including requirements analysis, system design, data migration, testing, and go-live support across multiple industries.",
+    role: "Sr. Principal Specialist",
+    company: "Mastek",
+    location: "Dubai, UAE",
+    period: "Jul 2021 — May 2024",
+    description: "Led Oracle Fusion Cloud HCM implementations for Al Khayyat Investments (Dubai) as HCM Lead. Provided advanced support for Zamil Group Holding Company (Saudi Arabia) on Oracle Fusion Cloud. Augmented resource for Digital Dubai Authority on Oracle EBS.",
   },
   {
-    role: "ERP Systems Analyst",
-    period: "2010 — 2013",
-    description: "Analyzed business processes and translated requirements into technical specifications. Managed system configurations and customizations for Oracle EBS modules.",
+    role: "Senior ACS Engineer",
+    company: "Oracle",
+    location: "Egypt",
+    period: "Aug 2018 — Jun 2021",
+    description: "Senior Advanced Customer Services engineer at Oracle, serving major clients including National Bank of Egypt, Department of Finance Abu Dhabi, National Water Company Saudi Arabia, Oman Aviation, Airports Company South Africa, E-Government Program Yesser, and Kuwait Integrated Petroleum Industries.",
+  },
+  {
+    role: "Techno-Functional Specialist",
+    company: "Evolutionary Systems Consultancy",
+    location: "Egypt",
+    period: "Mar 2016 — Jul 2018",
+    description: "Delivered Oracle EBS implementations for Abdul Latif Jameel, Almoosa Specialist Hospital, Kuwait Credit Bank, and Ministry of Foreign Affairs Abu Dhabi. Handled full lifecycle from requirements to go-live.",
+  },
+  {
+    role: "Functional Specialist",
+    company: "Sphere Consulting",
+    location: "Egypt",
+    period: "Jan 2013 — Feb 2016",
+    description: "Oracle HCM functional consulting for Kuwait University (upgrade) and Hamad Medical Corporation Qatar (support). Built foundation in enterprise HR system implementation.",
   },
 ];
 
 const certifications = [
-  "Oracle HRMS Certified Implementation Specialist",
-  "Oracle EBS R12 Certified Professional",
-  "Business Process Automation Expert",
-  "Project Management Professional",
+  "Oracle Global Human Resources Cloud 2019 — Certified Implementation Specialist",
+  "Oracle Payroll Cloud 2019 — Certified Implementation Specialist",
 ];
 ---
 
@@ -33,7 +51,8 @@ const certifications = [
         Professional journey
       </h2>
       <p class="text-muted max-w-2xl mx-auto">
-        15+ years of building, implementing, and transforming enterprise systems.
+        12+ years progressing from functional consulting to senior principal roles,
+        with a 3-year tenure at Oracle itself.
       </p>
     </div>
 
@@ -42,11 +61,12 @@ const certifications = [
       <div class="md:col-span-2">
         <h3 class="text-lg font-semibold text-primary mb-8">Experience</h3>
         <div class="space-y-8">
-          {experience.map((item, i) => (
+          {experience.map((item) => (
             <div class="relative pl-8 border-l-2 border-primary/20">
               <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white border-2 border-highlight" />
               <div class="text-xs font-medium text-highlight mb-1">{item.period}</div>
-              <h4 class="text-lg font-semibold text-primary mb-2">{item.role}</h4>
+              <h4 class="text-lg font-semibold text-primary">{item.role}</h4>
+              <div class="text-sm font-medium text-accent mb-2">{item.company} — {item.location}</div>
               <p class="text-muted text-sm leading-relaxed">{item.description}</p>
             </div>
           ))}
@@ -55,7 +75,7 @@ const certifications = [
 
       <!-- Certifications & Skills -->
       <div>
-        <h3 class="text-lg font-semibold text-primary mb-8">Certifications</h3>
+        <h3 class="text-lg font-semibold text-primary mb-8">Oracle Certifications</h3>
         <div class="space-y-3">
           {certifications.map((cert) => (
             <div class="flex items-start gap-3 p-3 bg-white rounded-lg">
@@ -67,13 +87,43 @@ const certifications = [
           ))}
         </div>
 
-        <h3 class="text-lg font-semibold text-primary mt-10 mb-6">Technologies</h3>
-        <div class="flex flex-wrap gap-2">
-          {["Oracle EBS", "PL/SQL", "Oracle HRMS", "REST APIs", "Python", "SQL", "Power BI", "Tableau", "BPEL", "SOA", "OIC", "AWS"].map((tech) => (
+        <h3 class="text-lg font-semibold text-primary mt-10 mb-4">Oracle Fusion</h3>
+        <div class="flex flex-wrap gap-2 mb-6">
+          {["Core HR", "Workforce Deployment", "Global Payroll", "Absence Management", "Performance Management", "Goal Management"].map((tech) => (
             <span class="text-xs font-medium px-3 py-1.5 bg-white border border-gray-200 rounded-full text-muted hover:border-primary hover:text-primary transition-colors">
               {tech}
             </span>
           ))}
+        </div>
+
+        <h3 class="text-lg font-semibold text-primary mt-6 mb-4">Oracle EBS</h3>
+        <div class="flex flex-wrap gap-2 mb-6">
+          {["Oracle HR", "Oracle Payroll", "SSHR", "iRecruitment", "PMS", "AME"].map((tech) => (
+            <span class="text-xs font-medium px-3 py-1.5 bg-white border border-gray-200 rounded-full text-muted hover:border-primary hover:text-primary transition-colors">
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        <h3 class="text-lg font-semibold text-primary mt-6 mb-4">Technical Skills</h3>
+        <div class="flex flex-wrap gap-2">
+          {["SQL", "PL/SQL", "XML Publisher", "OTBI", "Groovy Scripting", "Forms & OAF", "RetroPay", "Costing", "Advanced Excel"].map((tech) => (
+            <span class="text-xs font-medium px-3 py-1.5 bg-white border border-gray-200 rounded-full text-muted hover:border-primary hover:text-primary transition-colors">
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        <h3 class="text-lg font-semibold text-primary mt-10 mb-4">Languages</h3>
+        <div class="space-y-2">
+          <div class="flex justify-between text-sm">
+            <span class="text-dark">Arabic</span>
+            <span class="text-muted">Native</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-dark">English</span>
+            <span class="text-muted">Fluent</span>
+          </div>
         </div>
       </div>
     </div>

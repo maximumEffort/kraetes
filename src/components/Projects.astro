@@ -1,26 +1,50 @@
 ---
-const projects = [
+const featuredProjects = [
   {
-    title: "Enterprise HRMS Overhaul",
-    category: "ERP Implementation",
-    description: "Led the complete migration and modernization of an Oracle HRMS system for a 5,000+ employee organization, reducing payroll processing time by 60% and eliminating manual data entry errors.",
-    tags: ["Oracle HRMS", "Data Migration", "Process Automation"],
-    result: "60% faster payroll processing",
+    title: "Digital Dubai Authority",
+    category: "Government — Dedicated SME",
+    description: "Full-time operation support and system optimization as dedicated Subject Matter Expert for one of Dubai's key digital government authorities, managing Oracle E-Business Suite HR modules.",
+    tags: ["Oracle EBS", "Government", "Operations Support"],
+    region: "Dubai, UAE",
+    companies: "Dicetek LLC / Mastek",
   },
   {
-    title: "Automated Onboarding System",
-    category: "Business Automation",
-    description: "Designed and implemented an end-to-end employee onboarding automation system that reduced the onboarding cycle from 2 weeks to 2 days while improving compliance tracking.",
-    tags: ["Workflow Automation", "Compliance", "Integration"],
-    result: "85% reduction in onboarding time",
+    title: "Al Khayyat Investments",
+    category: "Private Sector — HCM Lead",
+    description: "Led the complete Oracle Fusion Cloud HCM implementation as HCM Lead, managing the full lifecycle from requirements gathering through go-live for a major Dubai-based conglomerate.",
+    tags: ["Oracle Fusion Cloud", "Implementation", "HCM Lead"],
+    region: "Dubai, UAE",
+    companies: "Mastek",
   },
   {
-    title: "Multi-System Integration Platform",
-    category: "Systems Integration",
-    description: "Architected a unified integration platform connecting HR, Finance, and Operations systems, creating a single source of truth and enabling real-time reporting across departments.",
-    tags: ["API Integration", "Data Pipeline", "Analytics"],
-    result: "Real-time cross-department reporting",
+    title: "National Bank of Egypt",
+    category: "Banking — Health Check",
+    description: "Conducted comprehensive HR system health check for one of Egypt's largest financial institutions, identifying optimization opportunities and recommending improvements on Oracle E-Business Suite.",
+    tags: ["Oracle EBS", "Health Check", "Banking"],
+    region: "Egypt",
+    companies: "Oracle",
   },
+];
+
+const clientLogos = [
+  { name: "Digital Dubai Authority", country: "UAE" },
+  { name: "Al Khayyat Investments", country: "UAE" },
+  { name: "Zamil Group", country: "Saudi Arabia" },
+  { name: "National Bank of Egypt", country: "Egypt" },
+  { name: "Dept. of Finance Abu Dhabi", country: "UAE" },
+  { name: "National Water Company", country: "Saudi Arabia" },
+  { name: "Nakheel", country: "UAE" },
+  { name: "Abdul Latif Jameel", country: "Saudi Arabia" },
+  { name: "Kuwait Integrated Petroleum", country: "Kuwait" },
+  { name: "Oman Aviation", country: "Oman" },
+  { name: "Airports Co. South Africa", country: "South Africa" },
+  { name: "E-Gov Program Yesser", country: "Saudi Arabia" },
+  { name: "Kuwait Credit Bank", country: "Kuwait" },
+  { name: "Ministry of Foreign Affairs", country: "UAE" },
+  { name: "Hamad Medical Corp.", country: "Qatar" },
+  { name: "Ecobank", country: "Ghana" },
+  { name: "Almoosa Hospital", country: "Saudi Arabia" },
+  { name: "Kuwait University", country: "Kuwait" },
 ];
 ---
 
@@ -29,35 +53,34 @@ const projects = [
     <div class="text-center mb-16">
       <p class="text-highlight font-medium text-sm tracking-wide uppercase mb-3">Projects</p>
       <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-        Results that speak for themselves
+        Trusted by leading organizations
       </h2>
       <p class="text-muted max-w-2xl mx-auto">
-        A selection of engagements where strategic thinking met hands-on execution
-        to deliver transformative outcomes.
+        From government authorities and national banks to petroleum companies and
+        healthcare institutions — across 8 countries.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
-      {projects.map((project) => (
+    <!-- Featured projects -->
+    <div class="grid md:grid-cols-3 gap-8 mb-16">
+      {featuredProjects.map((project) => (
         <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300">
-          <!-- Project header -->
           <div class="bg-gradient-to-br from-primary to-accent p-6">
             <span class="text-xs font-medium text-white/70 uppercase tracking-wide">
               {project.category}
             </span>
             <h3 class="text-xl font-semibold text-white mt-2">{project.title}</h3>
+            <div class="text-sm text-white/60 mt-1">{project.region}</div>
           </div>
 
           <div class="p-6">
             <p class="text-muted text-sm leading-relaxed mb-4">{project.description}</p>
 
-            <!-- Result highlight -->
-            <div class="bg-highlight/5 rounded-lg px-4 py-3 mb-4">
-              <div class="text-xs font-medium text-highlight uppercase tracking-wide">Key Result</div>
-              <div class="text-sm font-semibold text-primary mt-1">{project.result}</div>
+            <div class="bg-light rounded-lg px-4 py-3 mb-4">
+              <div class="text-xs font-medium text-muted uppercase tracking-wide">Via</div>
+              <div class="text-sm font-semibold text-primary mt-1">{project.companies}</div>
             </div>
 
-            <!-- Tags -->
             <div class="flex flex-wrap gap-2">
               {project.tags.map((tag) => (
                 <span class="text-xs font-medium px-3 py-1 bg-light rounded-full text-muted">
@@ -68,6 +91,19 @@ const projects = [
           </div>
         </div>
       ))}
+    </div>
+
+    <!-- Client grid -->
+    <div>
+      <h3 class="text-lg font-semibold text-primary text-center mb-8">All Clients</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+        {clientLogos.map((client) => (
+          <div class="bg-white rounded-xl p-4 text-center hover:shadow-md transition-shadow border border-gray-100">
+            <div class="text-sm font-medium text-primary leading-tight">{client.name}</div>
+            <div class="text-xs text-muted mt-1">{client.country}</div>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>
