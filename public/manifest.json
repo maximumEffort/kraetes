@@ -1,0 +1,22 @@
+{
+  "name": "Kraetes — Amr Sarhan",
+  "short_name": "Kraetes",
+  "description": "Digital Transformation & Automation Consulting by Amr Sarhan",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

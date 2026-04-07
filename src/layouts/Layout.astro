@@ -2,9 +2,59 @@
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  canonicalURL?: string;
 }
 
-const { title, description = "Amr Sarhan — Digital Transformation & Automation Consultant. Helping businesses modernize, automate, and grow." } = Astro.props;
+const {
+  title,
+  description = "Amr Sarhan — Digital Transformation & Automation Consultant. Helping businesses modernize, automate, and grow.",
+  image = "/og-image.png",
+  canonicalURL = Astro.url.href,
+} = Astro.props;
+
+const siteURL = "https://kraetes.com";
+const ogImageURL = new URL(image, siteURL).href;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${siteURL}/#person`,
+      "name": "Amr Sarhan",
+      "url": siteURL,
+      "jobTitle": "Digital Transformation & Automation Consultant",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Kraetes"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dubai",
+        "addressCountry": "AE"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/amr-sarhan"
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${siteURL}/#service`,
+      "name": "Kraetes — Digital Transformation Consulting",
+      "url": siteURL,
+      "description": description,
+      "provider": { "@id": `${siteURL}/#person` },
+      "areaServed": ["AE", "SA", "EG", "KW", "QA", "OM", "BH", "JO"],
+      "serviceType": [
+        "Digital Transformation",
+        "AI Automation",
+        "Oracle Fusion Cloud HCM",
+        "ERP Implementation"
+      ]
+    }
+  ]
+};
 ---
 
 <!doctype html>
@@ -14,12 +64,54 @@ const { title, description = "Amr Sarhan — Digital Transformation & Automation
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:site_name" content="Kraetes" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <!-- PWA / Theme -->
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Kraetes" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Fonts: self-hosted via Google Fonts with font-display:swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
     <title>{title}</title>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body class="bg-white text-dark font-sans antialiased">
+    <!-- Skip to content -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:text-sm focus:font-medium"
+    >
+      Skip to content
+    </a>
     <slot />
   </body>
 </html>
